@@ -351,10 +351,6 @@
       <div class="about-photo" id="aboutPhotoWrap">
         <!--<div class="ph-empty" id="aboutPhotoEmpty">No profile photo yet<br>tap below to upload one</div>-->
         <img id="aboutPhotoImg" src="profile.jpeg" style="display:block;">
-        <label class="upload-tag" for="aboutPhotoInput">
-          <span>Upload profile photo</span><span>↑</span>
-        </label>
-        <input type="file" id="aboutPhotoInput" accept="image/*" style="display:none;">
       </div>
 
       <div class="about-text">
@@ -540,20 +536,12 @@
           <div>Date<span>${p.date}</span></div>
           <div>Scale<span>${p.scale}</span></div>
         </div>
-        <button class="proj-remove" data-i="${i}">Remove project</button>
       `;
       grid.appendChild(card);
     });
 
-    const addCard = document.createElement('button');
-    addCard.className = "proj-add";
-    addCard.id = "openModalBtn";
-    addCard.innerHTML = `<span class="plus">+</span><span>Add project</span>`;
-    grid.appendChild(addCard);
-
     countEl.textContent = projects.length + (projects.length === 1 ? " project" : " projects");
 
-    addCard.addEventListener('click', openModal);
     grid.querySelectorAll('.proj-remove').forEach(btn => {
       btn.addEventListener('click', () => {
         const idx = parseInt(btn.getAttribute('data-i'), 10);
